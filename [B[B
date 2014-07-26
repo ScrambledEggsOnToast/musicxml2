@@ -1,0 +1,1114 @@
+[33mcommit 7177d7974b122b50affc717b550e697ff9829daa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Jul 20 02:38:55 2014 +0200
+
+    v1.7.1
+
+[33mcommit 994ebb7b4a6bc42cfcf0e191d6bfd51278f51f50[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Jun 5 03:05:07 2014 +0200
+
+    v1.7
+
+[33mcommit 053e2d14861d21b76bd72dbe1f982ed9023c2cc6[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Jun 2 14:02:15 2014 +0200
+
+    Adds more instances for Tempo
+
+[33mcommit c77538d9f2ad92334988ca5a90fc08df137c2c47[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Apr 21 01:50:10 2014 +0200
+
+    v1.6.2
+
+[33mcommit 2c3cc8fd49cf51bccdc114ab0f40e0dca05a1c42[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Apr 21 01:34:54 2014 +0200
+
+    v1.6.1
+
+[33mcommit 3adc10329ec1017efe8fbe60c3646a8b7a4bfd47[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Apr 5 19:46:48 2014 +0200
+
+    Ignore sandbox conf file
+
+[33mcommit 03c619700d4d43ced91a7ce35491af54b1dc9d45[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 11 18:31:52 2014 +0100
+
+    .travis.yml
+
+[33mcommit 17e323f98d8ca24583147e54196031bab85e6a1a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 11 15:46:56 2014 +0100
+
+    .gitignore
+
+[33mcommit 410d56fac2a475f64f1131febfeabc6c5a51851b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 11 15:37:30 2014 +0100
+
+    Repo cleaning
+
+[33mcommit 0d8097a15ecc080bbaefbf92f76c03b0a4ea97a2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 11 15:20:20 2014 +0100
+
+    Cleaning cabal files
+
+[33mcommit 03b3486244b7d82f941780985167b9a4324c0036[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 11 15:04:31 2014 +0100
+
+    Cleaning cabal files
+
+[33mcommit d88ba5b82a5f191680035926049e298db61892a2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 10 17:00:09 2014 +0100
+
+    Cabal version bump
+
+[33mcommit ef0e4bf0950ad58e93072d27f01d493bbe78751e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 10 16:55:09 2014 +0100
+
+    Bumped version to 1.6
+
+[33mcommit 2bc4deb98a4c776ce83401a8aacd23ef5c9d0a70[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 9 15:09:44 2014 +0100
+
+    Use same version
+
+[33mcommit 4b41747d9034b62fe30a7b32ed649adaa863e0b4[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Dec 10 01:08:39 2013 +0100
+
+    Adds more articulation/technical to Simple
+
+[33mcommit da418b9f220ab6bb1949e25b508309ad5c6b8c13[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 19:05:28 2013 +0100
+
+    Cleaning
+
+[33mcommit b0fd899e77a2b4c320d65086a12b904b5cdb3574[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 16:46:05 2013 +0100
+
+    Cleaning
+
+[33mcommit 64ed040316481d8d6f4c87df726db3efc7b885d2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 16:43:53 2013 +0100
+
+    Cleaning
+
+[33mcommit f602fa8fa1b1012316f189e56ff3002a99b2a4ea[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 16:42:18 2013 +0100
+
+    Cleaning
+
+[33mcommit 60a65c5b1d5e2c5d7dcc5805eae3d437f1f6d7a6[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 16:38:23 2013 +0100
+
+    Hiding mapNote
+
+[33mcommit 0ba5f9f0a58b35e6442c5d7c030e9413f1e95c45[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 16:02:03 2013 +0100
+
+    Cleaning
+
+[33mcommit fadb4a4f0af3237a4450f452b6229add9fb91a7b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Dec 4 15:42:48 2013 +0100
+
+    Adds Backup and Forward support
+
+[33mcommit abc3628a1f6697a3c0a33dd10e108e44f4243597[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Nov 13 01:45:01 2013 +0100
+
+    Handle rest with double and triple dots
+
+[33mcommit b350e0d19ed132b5deefbd5e38ceeaf976a99b64[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Nov 11 00:39:52 2013 +0100
+
+    Adds foldMusic etc, fixes tuplet scaling
+    
+    Closes #1
+
+[33mcommit a33826877683a602740644c43a206d9f72f7e5f7[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Nov 5 20:31:29 2013 +0100
+
+    Fixes COPYING
+
+[33mcommit 4ddddf07356a7f52543db59bbe3ee5a50bb1967d[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Sep 7 03:07:46 2013 +0200
+
+    Factors out HasNoteProps class
+
+[33mcommit 347093233ef760bc23b179a04fa97d54e474a05b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Sep 7 03:05:16 2013 +0200
+
+    Renames mapNoteProps to modify...
+
+[33mcommit 52a11b3f2f62ac64454b4e02f208f79fd96e0a67[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Sep 7 03:03:27 2013 +0200
+
+    Export list fix
+
+[33mcommit 4462c51d0d88cae090726e9d9eb970ed68c6f5fa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Aug 9 22:52:53 2013 +0200
+
+    Changes to export representation of Music type
+
+[33mcommit a1f73a77dcc116c1607d89b55a3a1df650bf0d69[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Jun 9 20:16:21 2013 +0200
+
+    Cleaning
+
+[33mcommit c4ad9d7cbd5929252d30dbf982de281656f7f535[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Jun 9 18:27:32 2013 +0200
+
+    Doc fixes
+
+[33mcommit 8280d6ffc22e88a3393986927c8a193ca433f151[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed May 22 17:59:20 2013 +0200
+
+    Fixed nats deps
+
+[33mcommit bc61a442c82b30249d59675437d5067c91c134a8[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed May 22 17:54:16 2013 +0200
+
+    Fixed nats dependency
+
+[33mcommit a90c38a004ddf6466015a2f777139fa1beee44e4[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed May 22 16:17:21 2013 +0200
+
+    v1.4 fix again
+
+[33mcommit 84c612ca7c2f5658fc88b5301fa800d53de27a41[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed May 22 16:15:18 2013 +0200
+
+    v1.4 fix
+
+[33mcommit e088e958bd6e7cdbd789b52ec8e26884361a5e4b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed May 22 16:14:11 2013 +0200
+
+    v1.4
+
+[33mcommit b45892f506215f74930aca3013155d4a1fde2597[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat May 4 01:02:26 2013 +0200
+
+    Cleaning
+
+[33mcommit 1459665b16bdd6ef4d5afbb3113b616454f5eef6[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Apr 26 14:40:03 2013 +0200
+
+    README
+
+[33mcommit cb0b86f3ec15c90d2fd293e39fe315de4a59ff58[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Apr 25 03:08:27 2013 +0200
+
+    Release v1.3
+
+[33mcommit 00cd3fdfbf3e3f791a8dc1ba920e983bc2b5813e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Apr 25 03:06:46 2013 +0200
+
+    Cleaning
+
+[33mcommit 0bd82599053c6bec57dacd0514d06178f7434611[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Apr 25 03:00:32 2013 +0200
+
+    Added trills and ornaments to Simple module, fix #5, fix #6
+
+[33mcommit f30cfafb4e173a3fbcf821a50129e9e6245d7948[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Apr 25 02:49:59 2013 +0200
+
+    Simple: Arpeggio, fixes #7
+
+[33mcommit d53c91a59c2384196063f0c79aa0912eada99fed[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Apr 25 02:25:12 2013 +0200
+
+    Bumped to v1.2 (Previous versions not tagged for some reason).
+
+[33mcommit d62b4eb8d62d9c80e817b983c1a9ef6f6047cb7e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Apr 2 01:08:09 2013 +0200
+
+    Note head support
+
+[33mcommit cc0deb3038d813856b910692c6a12b977f0760de[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 30 17:32:05 2013 +0100
+
+    Dotted rests, temp fix
+
+[33mcommit 6257f121138be4300754bdff693fd2412ada2a37[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 29 14:21:56 2013 +0100
+
+    Not showing fractional tempos + Cleaning
+
+[33mcommit c6d9c6f615bc1bc33b27ba3cb67b7a02ca37daac[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 23 17:34:47 2013 +0100
+
+    README
+
+[33mcommit f2fc5ea621330a82e4578e20352a903b95e8777f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 18 23:47:23 2013 +0100
+
+    New pitch and dynamics literals
+
+[33mcommit 8e302ce9f9f1c57ce742b1e117e1004acbdd8516[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 21:11:40 2013 +0100
+
+    Fixed #12
+
+[33mcommit a9eda1cc7d912893da2dfe0b344eaa6707af8e53[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 21:01:59 2013 +0100
+
+    Temp fix for #11
+
+[33mcommit bd5cb93ed870542b06e05a609e257ebfebef929a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 04:08:01 2013 +0100
+
+    Wrapped Music in newtype as well
+
+[33mcommit cf1a2cd6631fd9f92ecf3624df64fad782f1e27e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 03:51:21 2013 +0100
+
+    Wrapped PartList in newtype (preparing for #11)
+
+[33mcommit 4ace7fec9e7a1d83811ec9c85ef48eae5265ffd7[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 03:45:31 2013 +0100
+
+    Implemented bracket and brace (opened issue #11)
+
+[33mcommit 5197b71c60d23dfd5a078f5136bf1997f2500504[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 03:26:02 2013 +0100
+
+    Tremolo impl
+
+[33mcommit a69cb8d180a5044041623e8b44cf18410af54a1a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 00:45:06 2013 +0100
+
+    Changed to merge notation groups (ornaments, technical and articulations)
+    - Needs cleanup
+
+[33mcommit e95ab1901540a5dea0866d000729002177094c52[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Mar 10 00:23:27 2013 +0100
+
+    Misc cleaning, adding tremolo function (not implemented)
+
+[33mcommit c9b77001c8f727f46ccdc9114ec099f6381a7062[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 18:10:14 2013 +0100
+
+    More tests
+
+[33mcommit 0c8591c24d202af8c2f1eadce5ebd17a803b0a4d[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 03:03:58 2013 +0100
+
+    TODO
+
+[33mcommit f83fad9c52107fc466bdc6c63005588d608e50a4[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 03:02:54 2013 +0100
+
+    Gliss test
+
+[33mcommit 6115e13c4823965ed6b8a620091c83ca86712828[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 02:54:47 2013 +0100
+
+    Changed beam/tuplet/slur to be transformers instead of folds (composes better)
+
+[33mcommit 34723b5eff94906182065954051641cdbdf9fe83[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 02:44:32 2013 +0100
+
+    Refactored beam/tuplet/slur
+
+[33mcommit 13dc9c840fc9de4b5cd086ad6b4039350b3409cc[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 02:36:32 2013 +0100
+
+    Cleaning
+
+[33mcommit 6ba804a1d8835ec823c03e12687a1364690a031e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 02:36:23 2013 +0100
+
+    Cleaning
+
+[33mcommit 826e1679c2aa492a43254a2271198bc9ff759860[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 02:18:18 2013 +0100
+
+    Removed short versions of dynamics + misc
+
+[33mcommit ed77c8449e262b5dff0569c3836fbc35ccc33a4f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 01:55:50 2013 +0100
+
+    Cleaning
+
+[33mcommit 700b30ebf6e811f56ae5f7aecb8ff42bb83416eb[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 01:52:03 2013 +0100
+
+    More tests
+
+[33mcommit 408b6035205b49e3697f084854bd5fed8b56aa48[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 01:51:52 2013 +0100
+
+    Added cresc dim and related functions
+
+[33mcommit 6c14aba70936d76d5cca6ba66a73231e445dfa1f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 01:19:40 2013 +0100
+
+    More tests
+
+[33mcommit 77695f7a28c058c50104188c82f43d9332d191d0[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 01:10:55 2013 +0100
+
+    Added coda
+
+[33mcommit 9c6a33c025f4f7cd860cdb4b158ab4c3e61f1cde[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Mar 9 00:50:06 2013 +0100
+
+    More cleaning
+
+[33mcommit 2f2b2f86c7f94917296788087102c22efb0aaee6[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 23:19:25 2013 +0100
+
+    Simplified docs
+
+[33mcommit ed71142c65310236b6646b7fd737c880f3467744[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 23:03:56 2013 +0100
+
+    Improved docs for simple module
+
+[33mcommit 5a7bcd53e6a4159846c1b329f3235a83a7da78c5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 22:56:05 2013 +0100
+
+    Cleaned simple module
+
+[33mcommit 3b15a63d9a66d7e62a0bb9470dc5670bc599c25b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 22:10:56 2013 +0100
+
+    Misc cleaning
+
+[33mcommit 251490d03df23c860fa3437ff7e769c1f044f463[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 18:59:23 2013 +0100
+
+    Changed to use reverse-apply instead of homebrewn operator
+
+[33mcommit ead7e834cd70ec69aad1b561ec1892c558a87889[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 01:46:43 2013 +0100
+
+    TODO
+
+[33mcommit c197575c8d4c17dafb86c52e7191b196a09ec10e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 01:46:30 2013 +0100
+
+    Cleaned Simple module
+
+[33mcommit b83716976e0d23bfabd7b9b003c8fe1ef3bbbe02[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 00:55:21 2013 +0100
+
+    Factored out simple constructors
+
+[33mcommit 9cb0c12b64ed1e4e903f03751b3f79714680ac7f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 00:40:44 2013 +0100
+
+    Reorganized tests
+
+[33mcommit bf6035c9934dbacdbaa24daa8c5bb9eaba6f4e2e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 00:40:28 2013 +0100
+
+    Added some missing exports
+
+[33mcommit c94d44cfdc8f18e6c0377d59c2327ea71da8d55f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Mar 8 00:40:10 2013 +0100
+
+    README
+
+[33mcommit 68ba0faf84d9d312b1c25bdd2e8b3c9f6faa51ec[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 22:25:26 2013 +0100
+
+    Added tremolo tests
+
+[33mcommit 68c9079c3f80673c659186365a3199f81123fa76[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 02:04:50 2013 +0100
+
+    More simple notations
+
+[33mcommit 4c2cea064ab0b3fef718e9a5314e58f1b7613e11[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 02:04:33 2013 +0100
+
+    Fixed dynamic output
+
+[33mcommit 98942e2fb9f8c47c9d1d1f171ec51fda6a85d9bf[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 01:46:12 2013 +0100
+
+    Misc simple commands
+
+[33mcommit cc3e8f9eb06e4c99e64524e144b7a371ddfc8546[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 01:25:34 2013 +0100
+
+    More simple syntax
+
+[33mcommit 17c6136ee65d0e1fb53e13d48ef0a1a86d075fd0[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Thu Mar 7 01:13:13 2013 +0100
+
+    Minor fixes
+
+[33mcommit d9fc4ef87251c95ab933a58a380ec1059e37a096[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 23:50:41 2013 +0100
+
+    Tie support
+
+[33mcommit e82d9c14f0b615e92cd595c3116d823a2b5cea67[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 23:45:51 2013 +0100
+
+    Tuplet support
+
+[33mcommit d01f0a3e1bec11d4e987104f1cd02f70a3f82a90[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 23:40:35 2013 +0100
+
+    More notation exports
+
+[33mcommit f0e01765b1ae7d7a64efc111f8db3bed8a830f40[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 23:12:50 2013 +0100
+
+    Exported more Notations and Directions
+
+[33mcommit ebf92dc6f518fd26896808c98e293ba866a2ee25[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 22:20:18 2013 +0100
+
+    More exporting
+
+[33mcommit b668310104a3249fdec1d1c03af41bc5cc4d00ea[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 21:41:49 2013 +0100
+
+    Basic type exports
+
+[33mcommit efa29df23e5416bbebd902c957f5220a89e8f58a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 02:19:49 2013 +0100
+
+    Added many more notations
+
+[33mcommit b629f4cd1d835b54db6bc4beec020ff4b4cacec7[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Mar 6 01:57:22 2013 +0100
+
+    Unified Level types
+
+[33mcommit 3a2de3dc22345994004b1a8fb32c9f3c46bbf873[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:48:47 2013 +0100
+
+    Canonicalized column 41
+
+[33mcommit 9380ccbc606e920e639350e8523a6d8d3b9e07c3[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:47:27 2013 +0100
+
+    FFFE shit...
+
+[33mcommit fa484c6c43caa3011be6da0d0451678643c86aa3[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:46:45 2013 +0100
+
+    Misc renaming
+
+[33mcommit e79f9b67478429712834fb4a04f3a9af1c3a58eb[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:38:47 2013 +0100
+
+    Converted some Show instances to internal functions
+
+[33mcommit f1419befddc49ac3f689752eec82223d795a4bc2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:34:02 2013 +0100
+
+    Mad details
+
+[33mcommit c920c8c27ee3e6ccc28e246f1cd68e91b4fa87aa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:29:20 2013 +0100
+
+    Refactoring: moved Mode type to Pitch module aot
+
+[33mcommit 842f18e91897e77b82f99f7b229e239f498f2119[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:22:26 2013 +0100
+
+    Misc cleaning, tightened exports and moved some utilities
+
+[33mcommit e4d33ad867c035ca5ccd98a2f66edaceb781a89b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:19:20 2013 +0100
+
+    Separated definitions and write instances
+
+[33mcommit f48be00c070a652cddf8172bcdfbe892a1cdd2cf[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 22:00:06 2013 +0100
+
+    Renamed Dynamics type
+
+[33mcommit af5d2b04ccdfe1e6b859a342557828c04b1d5bb5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 20:21:45 2013 +0100
+
+    More notations and directions
+
+[33mcommit 9f1b4d3597197e06fff87369ec81d2b6fa19073b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 20:02:07 2013 +0100
+
+    Even more cleaning
+
+[33mcommit 6c2dd7043d9e0d09e465930ce35b9603c4b6fc4a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 19:47:01 2013 +0100
+
+    Even more cleaning
+
+[33mcommit cece87c27ac5a022b8e2a2c677b65288d0ad7156[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 19:42:49 2013 +0100
+
+    Misc cleaning
+
+[33mcommit 6237645842e0a8be5d146e054a2a93ba5dd10a63[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 19:29:40 2013 +0100
+
+    More notations + cleaning
+
+[33mcommit d0541b6a88128c68927c7c58e53bf450c083d07d[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 16:08:19 2013 +0100
+
+    Added missing exports etc
+
+[33mcommit 5683e1ffe301a3a02d7c5188efe603abaf8806e8[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 16:05:14 2013 +0100
+
+    Support for more note properties
+    * Tightened some types from Int to Natural
+
+[33mcommit 46cb4e79d111e40e626f2ac405fb87996be6ff9d[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 15:48:11 2013 +0100
+
+    Tentative tuplet + notation support
+
+[33mcommit 96ba21db8ce2cb53dfa80b0583a9d4752efa6cf5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 13:44:02 2013 +0100
+
+    Chord function
+
+[33mcommit 62d4c6d9f3d4dd92b06cf082853fd305050b11c1[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 13:39:43 2013 +0100
+
+    Parts function (auto-generate measure and part attrs)
+
+[33mcommit 3be07157c4beacbe53c1ff2a5cfb2b44b15ff038[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 12:39:47 2013 +0100
+
+    Fixed issue with > 1 dots
+
+[33mcommit 1db906fbe135b73ec776574bdaa0be27ceaee538[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 02:58:32 2013 +0100
+
+    Shortcut notation now works for dots
+
+[33mcommit 0d382b06470d38cd5d2749b19b3bd186c0f08510[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 02:58:07 2013 +0100
+
+    Pitched instance for Fifths type
+
+[33mcommit c2c25584c1baf1a6e26141f99369403ab0885544[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 02:07:24 2013 +0100
+
+    Added instances for Time
+
+[33mcommit f91cd949eb3de5ebe680213b051f59f0a73f0ab8[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 01:25:16 2013 +0100
+
+    Version 1.1
+    * Factored out pitch literals (now in music-pitch-literals package)
+    * Randomly bumped version to 1.1
+
+[33mcommit d479c3f8dbe8ed9991b7ad8433d9ec96a52bd3d5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 01:01:11 2013 +0100
+
+    Refactored short pitch and time notation
+
+[33mcommit 7222a65b621fcb96f17fbe44e2d81a17ddfbdf51[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 01:00:57 2013 +0100
+
+    Added instances for Pitch and Time types
+
+[33mcommit 938f99396025bd732fdcce4b292830abe40deb9c[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Mar 5 00:11:29 2013 +0100
+
+    More shortcuts
+
+[33mcommit 9167fc4e82c12fa2547bea862c46db5e0a58b2e7[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 21:16:57 2013 +0100
+
+    Minor fix
+
+[33mcommit af73831136cd9ac4d166a2b06649ae3d27631221[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 21:04:47 2013 +0100
+
+    More shortcuts
+
+[33mcommit 7f97500205a56f661b00430c13a50723fb990166[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 20:50:56 2013 +0100
+
+    More shortcuts
+
+[33mcommit 92be669fa2977558e52a0f1b4170cc97f52941cf[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 20:50:33 2013 +0100
+
+    Temporary NoteProp functors
+
+[33mcommit 42e15984e0ee653a706d6f0c0fee2be2b8842091[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 19:32:09 2013 +0100
+
+    Shortcuts for entering notes etc
+
+[33mcommit 316f7a4348b1c6a2a7ad41232b8edc4e67604fe4[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 19:31:29 2013 +0100
+
+    Misc additions
+    * More dynamic levels
+    * Integral instance for divs (for divMod)
+
+[33mcommit f74ab4fc47cfb4af23e76194908dbef6f894ae82[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 17:56:26 2013 +0100
+
+    TODO
+
+[33mcommit c8ab4274d87b6c2aa91f4653c07760d5dccca204[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Mar 4 17:40:46 2013 +0100
+
+    TODO
+
+[33mcommit ac35155ad2b40dcf99e483a3d971992f78ffd07a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Feb 27 02:58:38 2013 +0100
+
+    Beam and voice support
+
+[33mcommit 42205c0becb61636ce7f3e2b4190579d9d04e2ba[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Feb 27 01:47:38 2013 +0100
+
+    Basic beam/voice impl
+
+[33mcommit 7ba70231ed20c394972d0e89b65240b4012abaed[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Feb 27 00:11:11 2013 +0100
+
+    Testing various default instances
+
+[33mcommit dc66e8f7785f66bbac028a966d0f07d4459bf2d7[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Wed Feb 27 00:10:32 2013 +0100
+
+    Made display-pitch entry optional for unpitched notes and rests
+
+[33mcommit 3c313e6a98375b6e47db52098296cd5db7c85069[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Feb 26 23:35:50 2013 +0100
+
+    TODO
+
+[33mcommit 194e687a32785e2ac6169afb88568a6b790262d8[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Tue Feb 26 23:35:41 2013 +0100
+
+    Testing
+
+[33mcommit 54cb1078fb7579aaaa2f2795f91a398f9d4854ec[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 03:16:13 2013 +0100
+
+    Prepared to add more note properties
+
+[33mcommit a94dff8c5ec5f9cef0ec1665b483fcdd882d90fa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 03:06:43 2013 +0100
+
+    Made voice and beam props optional
+
+[33mcommit f48a2d6a27afc859c6751d036fe50f313df2256b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 03:04:02 2013 +0100
+
+    Tentative beam and voice support
+
+[33mcommit dfe44080d7417f4c90b166c68357f01062122203[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 02:58:36 2013 +0100
+
+    Even more cleaning
+
+[33mcommit eff328cb1d35dcc8a4c0e0d22d949a6e18691f93[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 02:51:37 2013 +0100
+
+    More cleaning
+
+[33mcommit 44c6b29b60dc0649ab7443b7a1c87b35164e3a45[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 02:33:23 2013 +0100
+
+    Cleaning
+
+[33mcommit e5bed599061fc2c09372131dd2a516e0695fbb7f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 00:56:59 2013 +0100
+
+    Factored out Out class (and remaned it) to Write
+
+[33mcommit 91542245063b6818a28cde49aa85b7b3447c22fb[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 00:48:17 2013 +0100
+
+    Ignored *.ly and *.pdf files
+
+[33mcommit 42bcbd52e5915322858044625c6d5c9933612a1b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sun Feb 24 00:47:29 2013 +0100
+
+    Factored out Dynamic, Pitch and Time representations to submodules
+
+[33mcommit 3e4c73b65073f431ea211d7234d04d569c7fe5b3[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 23:47:30 2013 +0100
+
+    Testing
+
+[33mcommit 8b816e4adfad39a01fc98bb32c7848164f2bf015[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 19:12:14 2013 +0100
+
+    Implemented note values
+
+[33mcommit 77047b117570a503ae1c7a5ef6c6fb7cdd7bdea2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 02:59:15 2013 +0100
+
+    Cleaning
+
+[33mcommit 941cfb111b8f7c7b6c854d1c4bb445f292fcbb35[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 02:53:48 2013 +0100
+
+    Note output
+
+[33mcommit e5b30ff656d8341997529b9ffc38150815119093[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 01:18:05 2013 +0100
+
+    README
+
+[33mcommit 8185865653c2a7317d43ce7f1a028e5fc8869ec5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 01:06:27 2013 +0100
+
+    Minor bug in time signature output
+
+[33mcommit d64d1e31ee0ca59f66ba420d42b54668a975e123[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 00:55:24 2013 +0100
+
+    XML out for attributes
+
+[33mcommit 62a858192a019a0964e46b9ba52ae1046a393cfe[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Feb 23 00:41:30 2013 +0100
+
+    XML output for scores
+
+[33mcommit 6f32e1f8edb20251d1e9a7f4e5f95c843b9756ee[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 23:34:35 2013 +0100
+
+    Misc refactoring
+
+[33mcommit 882de5940816bebb9352517789a55d9b884aa643[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 23:26:57 2013 +0100
+
+    More cleaning
+
+[33mcommit 4dd93e159d27d67aae895d75b7695574a7f9e983[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 23:25:11 2013 +0100
+
+    Cleaning
+
+[33mcommit 87abb103495df3413c28b5e5bc5bcca91535be97[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 23:00:12 2013 +0100
+
+    Testing
+
+[33mcommit b2f7ece60b5c2ffc6fe1088123f8d36d2cb7275b[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 23:00:00 2013 +0100
+
+    XML output
+
+[33mcommit 1052bd0f198417db50b434345fead709ab2a18aa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 22:02:21 2013 +0100
+
+    Refactored
+
+[33mcommit df24289e77832d4c4df91c73839ff18c088cceef[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 22:01:09 2013 +0100
+
+    XML output
+
+[33mcommit f1b46af4b78912e45516c6e021803572a8cf5eb4[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:35:34 2013 +0100
+
+    Implementing out for ScoreHeader
+      * Added misc utils
+
+[33mcommit 69fd77e7db88aa198c7b75295e328b7bdd4e8fb5[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:22:53 2013 +0100
+
+    README
+
+[33mcommit d70d6a38f26f3ad070d9f9d0f08d9513f24b22e2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:22:39 2013 +0100
+
+    Ignored misc files
+
+[33mcommit fd95372770fbcda51387748638bcc4728f61a92f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:22:15 2013 +0100
+
+    Testing
+
+[33mcommit d13cadd5f9e32f738fb469385a6c1ffb5bfe04d3[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:21:57 2013 +0100
+
+    Added Unofficial MusicXML tests (from LilyPond)
+
+[33mcommit fa190a0d1aa6c95434a8a2e6e8252558aaba76ad[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:21:36 2013 +0100
+
+    Updated cabal file
+
+[33mcommit 2758db7d4edd1b2f2e454a87e29905b83762df6f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 21:20:14 2013 +0100
+
+    Misc updates
+    * Added Identification, Creator, Mode and other
+    * Refactored
+
+[33mcommit a3b8a94cf9deb8d04318d121bbe8df1e2e1769eb[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Fri Feb 22 18:21:22 2013 +0100
+
+    Misc
+
+[33mcommit a1494678080239d1f48a354801a6ceca02939d1e[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Dec 31 03:37:27 2012 +0100
+
+    - Cleaning
+
+[33mcommit d290feb45df3e16a4ab16b806deafb7f9e62fac1[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Dec 31 03:35:50 2012 +0100
+
+    - Startup file
+
+[33mcommit 67100052c448d00a713b572b2a01a1f4701c7faa[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Dec 31 03:35:40 2012 +0100
+
+    - Fixed cabal name
+
+[33mcommit aadc8e0091485ae09c94a1752c2316fa2cab3e5d[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Dec 31 03:35:28 2012 +0100
+
+    - Added tests
+
+[33mcommit 6eb8bf9517f4eca39fbe68426975bc1d354b3dea[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Mon Dec 31 03:35:18 2012 +0100
+
+    - Misc additions and renaming
+
+[33mcommit 074b9efe79139c8a0dde3456f119e96140fb3e45[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 02:03:54 2012 +0100
+
+    - Basic notations etc
+
+[33mcommit b438df520f25c6e5ef879315a5e75b3498a5650a[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:45:00 2012 +0100
+
+    - Cleaning
+
+[33mcommit eca113163a7bb254bbe4c41a2e53db2a4fe15a79[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:41:25 2012 +0100
+
+    - Cleaning
+
+[33mcommit b5a8904ddc7c7f281de45c4d9ce1f45a423cf78f[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:38:12 2012 +0100
+
+    - Added part lists
+
+[33mcommit 68dcd7004ad2e9698340e4827c7de95c433bd622[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:25:55 2012 +0100
+
+    - Improved doc etc
+
+[33mcommit 3afc96be055a195aed68d7e2714371c334d2dbc9[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:15:16 2012 +0100
+
+    - Cleaning
+
+[33mcommit d415c9f1af35729f8f0ea93a283dba709d6a8425[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:10:48 2012 +0100
+
+    - Improved low-level names
+
+[33mcommit 252dda50b248e3d4e321628b42db0d0809977802[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:01:48 2012 +0100
+
+    - Misc
+
+[33mcommit 0323194e9a6cbff44a58f7e4f60293d8f12312d2[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 01:00:41 2012 +0100
+
+    - Misc
+
+[33mcommit bdd076555d7c8f7ca11705e8cc5bc333153083d1[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 00:51:36 2012 +0100
+
+    - Basics
+
+[33mcommit bee07331df2ac4531e4284d20709d34b5ca47fa3[m
+Author: Hans Höglund <hans@hanshoglund.se>
+Date:   Sat Dec 8 00:38:22 2012 +0100
+
+    - First

@@ -12,6 +12,12 @@
 -------------------------------------------------------------------------------------
 
 module Music.MusicXml.Read (
+    ReadMusicXml(..)
+    
   ) where
 
+import Text.XML.Light (Element)
+
+class ReadMusicXml a where
+    readMusicXml :: [Element] -> a
 
