@@ -423,8 +423,9 @@ data Notation
         Accidental
      | OtherNotation
         String
+    deriving Eq
 
-data FermataSign = NormalFermata | AngledFermata | SquaredFermata
+data FermataSign = NormalFermata | AngledFermata | SquaredFermata deriving Eq
 
 data Articulation
     = Accent 
@@ -442,7 +443,7 @@ data Articulation
     | Caesura 
     | Stress 
     | Unstress 
-    | OtherArticulation
+    | OtherArticulation deriving Eq
 
 data Ornament
     = TrillMark 
@@ -459,7 +460,7 @@ data Ornament
     | Tremolo 
         Natural                         -- TODO restrict to (1..8) range
     | OtherOrnament
-        String
+        String deriving Eq
         
 data Technical
     = UpBow 
@@ -486,7 +487,7 @@ data Technical
     | Arrow 
     | Handbell 
     | OtherTechnical
-        String
+        String deriving Eq
 
 -- ----------------------------------------------------------------------------------
 -- Directions
@@ -558,7 +559,8 @@ data StartStopContinueChange
     = Start
     | Stop
     | Continue              
-    | Change
+    | Change 
+    deriving Eq
 
 data StemDirection
     = StemDown
@@ -571,6 +573,7 @@ data LineType
     | Dashed
     | Dotted
     | Wavy
+    deriving Eq
 
 data NoteHead
     = SlashNoteHead

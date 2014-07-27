@@ -26,6 +26,7 @@ library
                         type-unary,
                         reverse-apply,
                         xml,
+                        bytestring,
                         hexpat-pickle,
                         music-pitch-literal     == 1.7.1,
                         music-dynamics-literal  == 1.7.1

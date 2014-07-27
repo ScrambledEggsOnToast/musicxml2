@@ -60,6 +60,7 @@ deriving instance Eq   PitchClass
 deriving instance Ord  PitchClass
 deriving instance Enum PitchClass
 deriving instance Show PitchClass
+deriving instance Read PitchClass
 
 deriving instance Eq   Accidental
 deriving instance Ord  Accidental
@@ -69,6 +70,7 @@ deriving instance Eq   Mode
 deriving instance Ord  Mode
 deriving instance Enum Mode
 deriving instance Show Mode
+deriving instance Read Mode
 
 deriving instance Eq   Semitones
 deriving instance Ord  Semitones
