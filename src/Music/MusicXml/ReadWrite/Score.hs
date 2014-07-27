@@ -27,7 +27,7 @@ import Music.MusicXml.Dynamics
 import Music.MusicXml.Read
 import Music.MusicXml.Write
 
-import Data.List (intersperse)
+import Data.List (intersperse, elemIndex)
 import Data.Char (toUpper, toLower)
 import Data.Tuple (swap)
 import Control.Applicative
@@ -414,7 +414,186 @@ xpTie = xpWrap (readTie, showTie) $ xpElemAttrs "tie" $ xpAttr "type" xpText
 -- Notations
 -- ----------------------------------------------------------------------------------
 
-xpNotation = undefined
+xpNotation = 
+    xpAlt (\s -> case s of
+        Tied _ -> 0
+        Slur _ _ -> 1
+        Tuplet _ _ -> 2
+        Glissando _ _ _ _ -> 3
+        Slide _ _ _ _ -> 4
+        Ornaments _ -> 5
+        Technical _ -> 6
+        Articulations _ -> 7
+        DynamicNotation _ -> 8
+        Fermata _ -> 9
+        Arpeggiate -> 10
+        NonArpeggiate -> 11
+        AccidentalMark _ -> 12
+        OtherNotation _ -> 13)
+    [ xpNotationTied, xpNotationSlur, xpNotationTuplet, xpNotationGlissando
+    , xpNotationSlide, xpNotationOrnaments, xpNotationTechnical, xpNotationArticulation
+    , xpNotationDynamic, xpNotationFermata, xpNotationArpeggiate, xpNotationNonArpeggiate
+    , xpNotationAccidentalMark, xpNotationOther]
+
+xpNotationTied = 
+    xpWrap (Tied . readStartStopContinue, \(Tied typ) -> showStartStopContinue typ) $
+    xpElemAttrs "tied" $ xpAttr "type" xpText
+
+xpNotationSlur =
+    xpWrap (\(level, typ) -> Slur level typ, \(Slur level typ) -> (level, typ)) $
+    xpElemAttrs "slur" $
+        xpPair
+            (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
+            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+
+xpNotationTuplet = 
+    xpWrap (\(level, typ) -> Tuplet level typ, \(Tuplet level typ) -> (level, typ)) $
+    xpElemAttrs "tuplet" $
+        xpPair
+            (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
+            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+
+xpNotationGlissando = 
+    xpWrap ( \((level, typ, lineTyp), text) -> Glissando level typ lineTyp text
+           , \(Glissando level typ lineTyp text) -> ((level, typ, lineTyp), text) ) $
+    xpElem "glissando"
+        (xpTriple
+            (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
+            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+            (xpWrap (readLineType, showLineType) $ xpAttr "line-type" xpText))
+        (xpOption $ xpContent xpText)
+
+xpNotationSlide = 
+    xpWrap ( \((level, typ, lineTyp), text) -> Slide level typ lineTyp text
+           , \(Slide level typ lineTyp text) -> ((level, typ, lineTyp), text) ) $
+    xpElem "slide"
+        (xpTriple
+            (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
+            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+            (xpWrap (readLineType, showLineType) $ xpAttr "line-type" xpText))
+        (xpOption $ xpContent xpText)
+
+xpNotationOrnaments = 
+    xpWrap (Ornaments, \(Ornaments o) -> o) $ 
+    xpElemNodes "ornaments" $ xpList $ 
+        xpPair 
+            xpOrnament
+            (xpList xpAccidental)
+
+xpNotationTechnical = 
+    xpWrap (Technical, \(Technical t) -> t) $
+    xpElemNodes "technical" $ xpList xpTechnical
+
+xpNotationArticulation = 
+    xpWrap (Articulations, \(Articulations a) -> a) $
+    xpElemNodes "articulations" $ xpList xpArticulation
+
+xpNotationDynamic = 
+    xpWrap (DynamicNotation, \(DynamicNotation d) -> d) $
+    xpElemNodes "dynamics" $ xpContent xpDynamics
+
+xpNotationFermata = 
+    xpWrap (Fermata, \(Fermata f) -> f) $
+    xpElemNodes "fermata" $ xpContent xpFermataSign
+
+xpNotationArpeggiate =
+    xpWrap ((`seq` Arpeggiate), (`seq` ())) $
+    xpElemNodes "arpeggiate" xpUnit
+
+xpNotationNonArpeggiate =
+    xpWrap ((`seq` NonArpeggiate), (`seq` ())) $
+    xpElemNodes "non-arpeggiate" xpUnit
+
+xpNotationAccidentalMark = 
+    xpWrap (AccidentalMark, \(AccidentalMark a) -> a) xpAccidental
+
+xpNotationOther = xpLift (OtherNotation "") -- TODO
+
+xpOrnament = 
+    xpAlt (\s -> case s of
+        Tremolo _ -> 1
+        _ -> 0)
+    [ xpEmptyNodes 
+        [ (TrillMark, "trill-mark")
+        , (Turn, "turn")
+        , (DelayedTurn, "delayed-turn")
+        , (InvertedTurn, "inverted-turn")
+        , (DelayedInvertedTurn, "delayed-inverted-turn")
+        , (VerticalTurn, "vertical-turn")
+        , (Shake, "shake")
+        , (WavyLine, "wavyline")
+        , (Mordent, "mordent")
+        , (InvertedMordent, "inverted-mordent")
+        , (Schleifer, "schleifer")
+        ]
+    , xpWrap (Tremolo . fromIntegral . read, \(Tremolo n) -> show n) $
+        xpElemNodes "tremolo" $ xpContent xpText
+    ]
+
+xpTechnical = 
+    xpAlt (\s -> case s of
+        OtherTechnical _ -> 1
+        _ -> 0)
+    [ xpEmptyNodes 
+        [ (UpBow, "up-bow")
+        , (DownBow, "down-bow")
+        , (Harmonic, "harmonic")
+        , (OpenString, "openstring")
+        , (ThumbPosition, "thumb-position")
+        , (Fingering, "fingering")
+        , (Pluck, "pluck")
+        , (DoubleTongue, "double-tongue")
+        , (TripleTongue, "triple-tongue")
+        , (Stopped, "stopped")
+        , (SnapPizzicato, "snap-pizzicato")
+        , (Fret, "fret")
+        , (String, "string")
+        , (HammerOn, "hammer-on")
+        , (PullOff, "pull-off")
+        , (Bend, "bend")
+        , (Tap, "tap")
+        , (Heel, "heel")
+        , (Toe, "toe")
+        , (Fingernails, "fingernails")
+        , (Hole, "hole")
+        , (Arrow, "arrow")
+        , (Handbell, "handbell")
+        ]
+    , xpLift (OtherTechnical "") -- TODO
+    ]
+
+xpArticulation = 
+    xpAlt (\s -> case s of
+        OtherArticulation -> 1
+        _ -> 0)
+    [ xpEmptyNodes 
+        [ (Accent, "accent")
+        , (StrongAccent, "strong-accent")
+        , (Staccato, "staccato")
+        , (Tenuto, "tenuto")
+        , (DetachedLegato, "detached-legato")
+        , (Staccatissimo, "staccatissimo")
+        , (Spiccato, "spiccato")
+        , (Scoop, "scoop")
+        , (Plop, "plop")
+        , (Doit, "doit")
+        , (Falloff, "falloff")
+        , (BreathMark, "breathmark")
+        , (Caesura, "caesura")
+        , (Stress, "stress")
+        , (Unstress, "unstress")
+        ]
+    , xpLift (OtherArticulation) -- TODO
+    ]
+
+
+xpAccidental = 
+    xpWrap (readAccidental, showAccidental) $
+    xpElemNodes "accidental-mark" $ xpContent xpText
+
+xpDynamics = undefined
+
+xpFermataSign = undefined
 
 xpDirection = undefined
 
@@ -456,3 +635,18 @@ showBeamType = undefined
 
 readTie = undefined
 showTie = undefined
+
+readLineType = undefined
+showLineType = undefined
+
+readStartStopContinue = undefined
+showStartStopContinue = undefined
+
+xpEmptyNodes :: Eq a => [(a,String)] -> PU [UNode String] a
+xpEmptyNodes ps = xpAlt indexFn . map xpFn $ ps
+    where
+        indexFn x = maybe (error "no match") id $ elemIndex x (map fst ps)
+
+        xpFn (x,s) = 
+            xpWrap ((`seq` x), (`seq` ())) $
+            xpElemNodes s xpUnit
