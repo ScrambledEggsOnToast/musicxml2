@@ -38,6 +38,7 @@ library
                         Music.MusicXml.Score
                         Music.MusicXml.Write
                         Music.MusicXml.Simple
+                        Music.MusicXml.ReadWrite
     other-modules:      Music.MusicXml.Write.Score
                         Music.MusicXml.ReadWrite.Score
     hs-source-dirs:     src

@@ -18,21 +18,24 @@ module Music.MusicXml.ReadWrite.Score (
 
 import Prelude hiding (getLine)
 
-import Text.XML.Expat.Pickle
+import Text.XML.Expat.Pickle hiding (Attributes)
 
 import Music.MusicXml.Score
 import Music.MusicXml.Time
 import Music.MusicXml.Pitch
 import Music.MusicXml.Dynamics
-import Music.MusicXml.Read
-import Music.MusicXml.Write
+import Music.MusicXml.ReadWrite
 
-import Data.List (intersperse, elemIndex)
+import Data.List (intersperse, elemIndex, find)
 import Data.Char (toUpper, toLower)
 import Data.Tuple (swap)
 import Control.Applicative
 
-xpScore :: PU [UNode String] Score
+instance ReadMusicXml Score where
+    readMusicXml = unpickleTree xpScore
+instance ShowMusicXml Score where
+    showMusicXml = pickleTree xpScore
+
 xpScore = xpAlt 
     (\s -> case s of
         Partwise _ _ _ -> 0
@@ -79,6 +82,11 @@ xpPartAttrs = xpAttr "id" $ xpWrap (PartAttrs, \(PartAttrs i) -> i) xpText0
 
 xpMeasureAttrs = xpAttr "number" $ xpWrap (MeasureAttrs . read, \(MeasureAttrs n) -> show n) xpText0
 
+instance ReadMusicXml ScoreHeader where
+    readMusicXml = unpickleTree xpScoreHeader
+instance ShowMusicXml ScoreHeader where
+    showMusicXml = pickleTree xpScoreHeader
+
 xpScoreHeader = 
     xpWrap ( \(title, mvm, ident, partList) -> ScoreHeader title mvm ident partList
            , \(ScoreHeader title mvm ident partList) -> (title, mvm, ident, partList)) $
@@ -87,6 +95,11 @@ xpScoreHeader =
         (xpOption $ xpElemNodes "movement-title" $ xpContent xpText)
         (xpOption $ xpElemNodes "identification" $ xpIdentification)
         (xpElemNodes "part-list" xpPartList)
+
+instance ReadMusicXml Identification where
+    readMusicXml = unpickleTree xpIdentification
+instance ShowMusicXml Identification where
+    showMusicXml = pickleTree xpIdentification
 
 xpIdentification = 
     xpWrap ( Identification, \(Identification cs) -> cs) $
@@ -100,13 +113,26 @@ xpIdentification =
 -- Part list
 -- ----------------------------------------------------------------------------------
 
+instance ReadMusicXml PartList where
+    readMusicXml = unpickleTree xpPartList
+instance ShowMusicXml PartList where
+    showMusicXml = pickleTree xpPartList
+
 xpPartList = 
     xpWrap ( PartList, getPartList ) $
-    xpList $ xpAlt
-        (\s -> case s of
+    xpList xpPartListElem
+
+instance ReadMusicXml PartListElem where
+    readMusicXml = unpickleTree xpPartListElem
+instance ShowMusicXml PartListElem where
+    showMusicXml = pickleTree xpPartListElem
+
+xpPartListElem = 
+    xpAlt (\s -> case s of
             Part _ _ _ -> 0
             Group _ _ _ _ _ _ _ -> 1)
         [xpPart, xpGroup]
+
 
 xpPart = 
     xpWrap ( \(ident, (name, abbrev)) -> Part ident name abbrev
@@ -123,13 +149,13 @@ xpGroup =
     xpElem "part-group"
         (xpPair
             (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
-            (xpWrap (readStartStop, showStartStop) $ xpAttr "type" xpText0)
+            (xpWrapStartStop $ xpAttr "type" xpText0)
         )
         (xp4Tuple
             (xpElemNodes "group-name" $ xpContent xpText0)
             (xpOption $ xpElemNodes "group-abbreviation" $ xpContent xpText)
-            (xpOption $ xpWrap (readGroupSymbol, showGroupSymbol) $ xpElemNodes "group-symbol" $ xpContent xpText)
-            (xpOption $ xpWrap (readGroupBarlines, showGroupBarlines) $ xpElemNodes "group-barline" $ xpContent xpText)
+            (xpOption $ xpWrapGroupSymbol $ xpElemNodes "group-symbol" $ xpContent xpText)
+            (xpOption $ xpWrapGroupBarlines $ xpElemNodes "group-barline" $ xpContent xpText)
         )
 
 -- ----------------------------------------------------------------------------------
@@ -137,6 +163,11 @@ xpGroup =
 -- ----------------------------------------------------------------------------------
 
 xpMusic = xpWrap (Music, getMusic) $ xpList xpMusicElem
+
+instance ReadMusicXml MusicElem where
+    readMusicXml = unpickleTree xpMusicElem
+instance ShowMusicXml MusicElem where
+    showMusicXml = pickleTree xpMusicElem
 
 xpMusicElem = 
     xpAlt (\s -> case s of
@@ -173,6 +204,11 @@ xpMusicDirection =
 -- ----------------------------------------------------------------------------------
 -- Attributes
 -- ----------------------------------------------------------------------------------
+
+instance ReadMusicXml Attributes where
+    readMusicXml = unpickleTree xpAttributes
+instance ShowMusicXml Attributes where
+    showMusicXml = pickleTree xpAttributes
 
 xpAttributes = 
     xpAlt (\s -> case s of
@@ -233,16 +269,21 @@ xpAttributesDivTime =
         (xpElemNodes "beat-type" $ xpContent xpText)
 
 xpAttributesClef = 
-    xpWrap ( \(sign , line) -> Clef (readClefSign sign) (Line . read $ line)
-           , \(Clef sign line) -> (show . getLine $ line, showClefSign sign) ) $ 
+    xpWrap ( \(sign , line) -> Clef sign (Line . read $ line)
+           , \(Clef sign line) -> (sign, show . getLine $ line) ) $ 
     xpElemNodes "clef" $
     xpPair
-        (xpElemNodes "sign" $ xpContent xpText0)
+        (xpWrapClefSign $ xpElemNodes "sign" $ xpContent xpText0)
         (xpElemNodes "line" $ xpContent xpText0)
 
 -- ----------------------------------------------------------------------------------
 -- Notes
 -- ----------------------------------------------------------------------------------
+
+instance ReadMusicXml NoteProps where
+    readMusicXml = unpickleTree xpNoteProps
+instance ShowMusicXml NoteProps where
+    showMusicXml = pickleTree xpNoteProps
 
 xpNoteProps = 
     xpWrap ( \( (instrument, voice, typ, dots, accidental, timeMod), 
@@ -282,8 +323,8 @@ xpNoteVoice = xpOption $ xpElemNodes "voice" $ xpContent xpPrim
 xpNoteType = xpOption $ 
     xpWrap (swap, swap) $
     xpElem "type" 
-        (xpOption $ xpWrap (readNoteSize, showNoteSize) $ xpAttr "size" xpText)
-        (xpWrap (readNoteVal, showNoteVal) $ xpContent xpText)
+        (xpOption $ xpWrapNoteSize $ xpAttr "size" xpText)
+        (xpWrapNoteVal $ xpContent xpText)
 
 xpNoteDots = 
     xpWrap (fromIntegral . length, (`replicate` ()) . fromIntegral) $
@@ -291,14 +332,14 @@ xpNoteDots =
             xpElemNodes "dot" xpUnit
 
 xpNoteAccidental = xpOption $
-    xpWrap ( \((cautionary, editorial), accidental) -> (readAccidental accidental, 
+    xpWrap ( \((cautionary, editorial), accidental) -> (accidental, 
     cautionary, editorial)
-           , \(accidental, cautionary, editorial) -> ((cautionary, editorial), showAccidental accidental) ) $
+           , \(accidental, cautionary, editorial) -> ((cautionary, editorial), accidental) ) $
     xpElem "accidental"
         (xpPair
             (xpDefault False $ xpAttr "cautionary" $ xpYesNo)
             (xpDefault False $ xpAttr "editorial" $ xpYesNo) )
-        (xpContent xpText0)
+        (xpWrapAccidental $ xpContent xpText0)
 
 xpNoteTimeMod = xpOption $
     xpElemNodes "time-modification"
@@ -307,31 +348,36 @@ xpNoteTimeMod = xpOption $
             (xpElemNodes "normal-notes" $ xpContent xpPrim) )
 
 xpNoteStem = xpOption $ 
-    xpWrap (readStemDirection, showStemDirection) $ 
+    xpWrapStemDirection $ 
     xpElemNodes "stem" $ xpContent xpText0
 
 xpNoteHead = xpOption $
-    xpWrap ( \((filled, parentheses), notehead) -> (readNoteHead notehead, 
+    xpWrap ( \((filled, parentheses), notehead) -> (notehead, 
     filled, parentheses)
-           , \(notehead, filled, parentheses) -> ((filled, parentheses), showNoteHead notehead) ) $
+           , \(notehead, filled, parentheses) -> ((filled, parentheses), notehead) ) $
     xpElem "notehead"
         (xpPair
             (xpDefault False $ xpAttr "filled" $ xpYesNo)
             (xpDefault False $ xpAttr "parentheses" $ xpYesNo) )
-        (xpContent xpText0)
+        (xpWrapNoteHead $ xpContent xpText0)
 
-xpNoteHeadText = xpLift Nothing -- TODO
+xpNoteHeadText = xpThrow "note head text" -- TODO
 
-xpNoteStaff = xpLift Nothing -- TODO
+xpNoteStaff = xpThrow "note staff" -- TODO
 
 xpNoteBeam = xpOption $ 
     xpElem "beam" 
         (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpDefault "1" $ xpAttr "number" xpText0)
-        (xpWrap (readBeamType, showBeamType) $ xpElemNodes "beam" $ xpContent xpText0)
+        (xpWrapBeamType $ xpElemNodes "beam" $ xpContent xpText0)
 
 xpNoteNotations = xpDefault [] $ xpElemNodes "notations" $ xpList xpNotation
 
-xpNoteLyrics = xpLift [] -- TODO
+xpNoteLyrics = xpThrow "note lyrics" -- TODO
+
+instance ReadMusicXml FullNote where
+    readMusicXml = unpickleTree xpFullNote
+instance ShowMusicXml FullNote where
+    showMusicXml = pickleTree xpFullNote
 
 xpFullNote = 
     xpAlt (\s -> case s of
@@ -374,6 +420,11 @@ xpFullNoteRest =
             (xpElemNodes "display-step" $ xpContent xpPrim)
             (xpWrap (Octaves, getOctaves) $ xpElemNodes "display-octave" $ xpContent xpPrim)
 
+instance ReadMusicXml Note where
+    readMusicXml = unpickleTree xpNote
+instance ShowMusicXml Note where
+    showMusicXml = pickleTree xpNote
+
 xpNote = 
     xpAlt (\s -> case s of
         Note _ _ _ _ -> 0
@@ -408,11 +459,16 @@ xpNoteGrace =
 
 xpDuration = xpWrap (Divs, getDivs) $ xpElemNodes "duration" $ xpContent xpPrim
 
-xpTie = xpWrap (readTie, showTie) $ xpElemAttrs "tie" $ xpAttr "type" xpText
+xpTie = xpWrapTie $ xpElemAttrs "tie" $ xpAttr "type" xpText
 
 -- ----------------------------------------------------------------------------------
 -- Notations
 -- ----------------------------------------------------------------------------------
+
+instance ReadMusicXml Notation where
+    readMusicXml = unpickleTree xpNotation
+instance ShowMusicXml Notation where
+    showMusicXml = pickleTree xpNotation
 
 xpNotation = 
     xpAlt (\s -> case s of
@@ -436,22 +492,22 @@ xpNotation =
     , xpNotationAccidentalMark, xpNotationOther]
 
 xpNotationTied = 
-    xpWrap (Tied . readStartStopContinue, \(Tied typ) -> showStartStopContinue typ) $
-    xpElemAttrs "tied" $ xpAttr "type" xpText
+    xpWrap (Tied , \(Tied typ) -> typ) $
+    xpWrapStartStopContinue $ xpElemAttrs "tied" $ xpAttr "type" xpText
 
 xpNotationSlur =
     xpWrap (\(level, typ) -> Slur level typ, \(Slur level typ) -> (level, typ)) $
     xpElemAttrs "slur" $
         xpPair
             (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
-            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+            (xpWrapStartStopContinue $ xpAttr "type" xpText)
 
 xpNotationTuplet = 
     xpWrap (\(level, typ) -> Tuplet level typ, \(Tuplet level typ) -> (level, typ)) $
     xpElemAttrs "tuplet" $
         xpPair
             (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
-            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
+            (xpWrapStartStopContinue $ xpAttr "type" xpText)
 
 xpNotationGlissando = 
     xpWrap ( \((level, typ, lineTyp), text) -> Glissando level typ lineTyp text
@@ -459,8 +515,8 @@ xpNotationGlissando =
     xpElem "glissando"
         (xpTriple
             (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
-            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
-            (xpWrap (readLineType, showLineType) $ xpAttr "line-type" xpText))
+            (xpWrapStartStopContinue $ xpAttr "type" xpText)
+            (xpWrapLineType $ xpAttr "line-type" xpText))
         (xpOption $ xpContent xpText)
 
 xpNotationSlide = 
@@ -469,8 +525,8 @@ xpNotationSlide =
     xpElem "slide"
         (xpTriple
             (xpWrap (Level . fromIntegral . read, show . getLevel) $ xpAttr "number" xpText0)
-            (xpWrap (readStartStopContinue, showStartStopContinue) $ xpAttr "type" xpText)
-            (xpWrap (readLineType, showLineType) $ xpAttr "line-type" xpText))
+            (xpWrapStartStopContinue $ xpAttr "type" xpText)
+            (xpWrapLineType $ xpAttr "line-type" xpText))
         (xpOption $ xpContent xpText)
 
 xpNotationOrnaments = 
@@ -490,7 +546,7 @@ xpNotationArticulation =
 
 xpNotationDynamic = 
     xpWrap (DynamicNotation, \(DynamicNotation d) -> d) $
-    xpElemNodes "dynamics" $ xpContent xpDynamics
+    xpElemNodes "dynamics" $ xpDynamics
 
 xpNotationFermata = 
     xpWrap (Fermata, \(Fermata f) -> f) $
@@ -507,7 +563,12 @@ xpNotationNonArpeggiate =
 xpNotationAccidentalMark = 
     xpWrap (AccidentalMark, \(AccidentalMark a) -> a) xpAccidental
 
-xpNotationOther = xpLift (OtherNotation "") -- TODO
+xpNotationOther = xpThrow "other notation" -- TODO
+
+instance ReadMusicXml Ornament where
+    readMusicXml = unpickleTree xpOrnament
+instance ShowMusicXml Ornament where
+    showMusicXml = pickleTree xpOrnament
 
 xpOrnament = 
     xpAlt (\s -> case s of
@@ -529,6 +590,11 @@ xpOrnament =
     , xpWrap (Tremolo . fromIntegral . read, \(Tremolo n) -> show n) $
         xpElemNodes "tremolo" $ xpContent xpText
     ]
+
+instance ReadMusicXml Technical where
+    readMusicXml = unpickleTree xpTechnical
+instance ShowMusicXml Technical where
+    showMusicXml = pickleTree xpTechnical
 
 xpTechnical = 
     xpAlt (\s -> case s of
@@ -559,8 +625,13 @@ xpTechnical =
         , (Arrow, "arrow")
         , (Handbell, "handbell")
         ]
-    , xpLift (OtherTechnical "") -- TODO
+    , xpThrow "other technical" -- TODO
     ]
+
+instance ReadMusicXml Articulation where
+    readMusicXml = unpickleTree xpArticulation
+instance ShowMusicXml Articulation where
+    showMusicXml = pickleTree xpArticulation
 
 xpArticulation = 
     xpAlt (\s -> case s of
@@ -583,19 +654,110 @@ xpArticulation =
         , (Stress, "stress")
         , (Unstress, "unstress")
         ]
-    , xpLift (OtherArticulation) -- TODO
+    , xpThrow "other articulation" -- TODO
     ]
 
 
 xpAccidental = 
-    xpWrap (readAccidental, showAccidental) $
+    xpWrapAccidental $
     xpElemNodes "accidental-mark" $ xpContent xpText
 
-xpDynamics = undefined
+-- ----------------------------------------------------------------------------------
+-- Directions
+-- ----------------------------------------------------------------------------------
 
-xpFermataSign = undefined
+instance ReadMusicXml Direction where
+    readMusicXml = unpickleTree xpDirection
+instance ShowMusicXml Direction where
+    showMusicXml = pickleTree xpDirection
 
-xpDirection = undefined
+xpDirection = 
+    xpAlt (\s -> case s of
+        Rehearsal _ -> 0
+        Segno -> 1
+        Words _ -> 2
+        Coda -> 3
+        Crescendo Start -> 4
+        Diminuendo Start -> 4
+        Crescendo Stop -> 5
+        Diminuendo Stop -> 5
+        Dynamics _ -> 6
+        Metronome _ _ _ -> 7
+        Bracket -> 8
+        OtherDirection _ -> 9)
+    [ xpDirectionRehearsal, xpDirectionSegno, xpDirectionWords, xpDirectionCoda
+    , xpDirectionWedgeStart, xpDirectionWedgeStop
+    , xpDirectionDynamics, xpDirectionMetronome, xpDirectionBracket, xpDirectionOther
+    ]
+
+xpDirectionRehearsal = 
+    xpWrap (Rehearsal, \(Rehearsal str) -> str) $
+    xpElemNodes "rehearsal" $ xpContent xpText0
+
+xpDirectionSegno = 
+    xpWrap ((`seq` Segno), (`seq` ())) $
+    xpElemNodes "segno" xpUnit
+
+xpDirectionWords = 
+    xpWrap (Words, \(Words str) -> str) $
+    xpElemNodes "words" $ xpContent xpText0
+
+xpDirectionCoda = 
+    xpWrap ((`seq` Coda), (`seq` ())) $
+    xpElemNodes "coda" xpUnit
+
+xpDirectionWedgeStart = 
+    xpWrap (
+        \s -> case s of
+            "crescendo" -> Crescendo Start
+            "diminuendo" -> Diminuendo Start
+            _ -> error "bad wedge"
+      , \s -> case s of
+            Crescendo Start -> "crescendo"
+            Diminuendo Start -> "diminuendo"
+    ) $
+    xpElemAttrs "wedge" $ xpAttr "type" xpText
+
+xpDirectionWedgeStop = xpThrow "wedge stop" -- TODO
+
+xpDirectionDynamics = 
+    xpWrap (Dynamics, \(Dynamics dyn) -> dyn) $
+    xpElemNodes "dynamics" $ xpDynamics
+
+xpDirectionMetronome = 
+    xpWrap ( \(noteVal, dotted, tempo) -> Metronome noteVal dotted tempo
+           , \(Metronome noteVal dotted tempo) -> (noteVal, dotted, tempo) ) $
+    xpElemNodes "metronome" $
+        xpTriple
+            (xpWrapNoteVal $ xpElemNodes "beat-unit" $ xpContent xpText)
+            (xpAlt (\s -> case s of
+                True -> 0
+                False -> 1) [xpWrap ((`seq` True), (`seq` ())) $ xpElemNodes "beat-unit-dot" xpUnit, xpLift False])
+            (xpWrapTempo $ xpElemNodes "per-minute" $ xpContent xpText)
+        
+
+xpDirectionBracket = xpThrow "bracket"
+
+xpDirectionOther = xpThrow "other direction"
+
+-- ----------------------------------------------------------------------------------
+-- Lyrics
+-- ----------------------------------------------------------------------------------
+
+instance ReadMusicXml Lyric where
+    readMusicXml = unpickleTree xpLyric
+instance ShowMusicXml Lyric where
+    showMusicXml = pickleTree xpLyric
+
+xpLyric = xpThrow "lyric"
+
+-- ----------------------------------------------------------------------------------
+-- Basic types
+-- ----------------------------------------------------------------------------------
+
+xpDynamics = xpEmptyNodes . map (\d -> (d, map toLower . show $ d)) $ [PPPPPP .. FZ]
+
+xpFermataSign = xpWrapFermata xpText
 
 xpYesNo = xpWrap 
     ( \b -> case b of
@@ -603,44 +765,128 @@ xpYesNo = xpWrap
         "no" -> False,
       \b -> if b then "yes" else "no") xpPrim
 
-readNoteSize = undefined
-showNoteSize = undefined
+xpWrapBeamType = xpWrapDict 
+    [ (BeginBeam, "begin")
+    , (ContinueBeam, "continue")
+    , (EndBeam, "end")
+    , (ForwardHook, "forward-hook")
+    , (BackwardHook, "backward-hook")
+    ]
 
-readNoteVal = undefined
-showNoteVal = undefined
+xpWrapStartStop = xpWrapStartStopContinueChange
+xpWrapStartStopChange = xpWrapStartStopContinueChange
+xpWrapStartStopContinue = xpWrapStartStopContinueChange
 
-readStartStop = undefined
-showStartStop = undefined
+xpWrapStartStopContinueChange = xpWrapDict
+    [ (Start, "start")
+    , (Stop, "stop")
+    , (Continue, "continue")
+    , (Change, "change")
+    ]
 
-readGroupSymbol = undefined
-showGroupSymbol = undefined
+xpWrapStemDirection = xpWrapDict
+    [ (StemDown, "down")
+    , (StemUp, "up")
+    , (StemNone, "none")
+    , (StemDouble, "double")
+    ]
 
-readGroupBarlines = undefined
-showGroupBarlines = undefined
+xpWrapLineType = xpWrapDict
+    [ (Solid, "solid")
+    , (Dashed, "dashed")
+    , (Dotted, "dotted")
+    , (Wavy, "wavy")
+    ]
+    
+xpWrapTempo = xpWrap (Tempo . read, \t -> show (round . getTempo $ t :: Int))
 
-readClefSign = undefined
-showClefSign = undefined
+xpWrapNoteHead = xpWrapDict
+    [ (SlashNoteHead, "slash")
+    , (TriangleNoteHead, "triangle")
+    , (DiamondNoteHead, "diamond")
+    , (SquareNoteHead, "square")
+    , (CrossNoteHead, "cross")
+    , (XNoteHead, "x")
+    , (CircleXNoteHead, "circle")
+    , (InvertedTriangleNoteHead, "inverted-triangle")
+    , (ArrowDownNoteHead, "arrow-down")
+    , (ArrowUpNoteHead, "arrow-up")
+    , (SlashedNoteHead, "slashed")
+    , (BackSlashedNoteHead, "back-slashed")
+    , (NormalNoteHead, "normal")
+    , (ClusterNoteHead, "cluster")
+    , (CircleDotNoteHead, "circle")
+    , (LeftTriangleNoteHead, "left-triangle")
+    , (RectangleNoteHead, "rectangle")
+    , (NoNoteHead, "none")
+    ]
 
-readAccidental = undefined
-showAccidental = undefined
+xpWrapAccidental = xpWrapDict
+    [ (DoubleFlat, "double-flat")
+    , (Flat, "flat")
+    , (Natural, "natural")
+    , (Sharp, "sharp")
+    , (DoubleSharp, "double-sharp")
+    ]
 
-readStemDirection = undefined
-showStemDirection = undefined
+xpWrapNoteVal = xpWrapDict
+    [ (NoteVal (1/1024), "1024th")
+    , (NoteVal (1/512), "512th")
+    , (NoteVal (1/256), "256th")
+    , (NoteVal (1/128), "128th")
+    , (NoteVal (1/64), "64th")
+    , (NoteVal (1/32), "32nd")
+    , (NoteVal (1/16), "16th")
+    , (NoteVal (1/8), "eighth")
+    , (NoteVal (1/4), "quarter")
+    , (NoteVal (1/2), "half")
+    , (NoteVal (1/1), "whole")
+    , (NoteVal (2/1), "breve")
+    , (NoteVal (4/1), "long")
+    , (NoteVal (8/1), "maxima")
+    ]
 
-readNoteHead = undefined
-showNoteHead = undefined
+xpWrapClefSign = xpWrapDict
+    [ (GClef, "G")
+    , (CClef, "C")
+    , (FClef, "F")
+    , (PercClef, "percussion")
+    , (TabClef, "tab")
+    ]
 
-readBeamType = undefined
-showBeamType = undefined
+xpWrapNoteSize = xpWrapDict
+    [ (SizeFull, "full")
+    , (SizeCue, "cue")
+    , (SizeLarge, "large")
+    ]
 
-readTie = undefined
-showTie = undefined
+xpWrapGroupSymbol = xpWrapDict
+    [ (GroupBrace, "brace")
+    , (GroupLine, "line")
+    , (GroupBracket, "bracket")
+    , (GroupSquare, "square")
+    , (NoGroupSymbol, "none")
+    ]
 
-readLineType = undefined
-showLineType = undefined
+xpWrapGroupBarlines = xpWrapDict
+    [ (GroupBarLines, "yes")
+    , (GroupNoBarLines, "no")
+    , (GroupMensurstrich, "Mensurstrich")
+    ]
 
-readStartStopContinue = undefined
-showStartStopContinue = undefined
+xpWrapTie = xpWrapStartStop
+
+xpWrapFermata = xpWrapDict 
+    [ (NormalFermata, "normal")
+    , (AngledFermata, "angled")
+    , (SquaredFermata, "squared")
+    ]
+
+xpWrapDict :: (Eq a, Eq b) => [(b, a)] -> PU t a -> PU t b
+xpWrapDict ps = xpWrap (unpFn, pFn)
+    where
+        unpFn x = fst . maybe (error "no match") id . find ((== x) . snd) $ ps
+        pFn x = snd . maybe (error "no match") id . find ((== x) . fst) $ ps
 
 xpEmptyNodes :: Eq a => [(a,String)] -> PU [UNode String] a
 xpEmptyNodes ps = xpAlt indexFn . map xpFn $ ps

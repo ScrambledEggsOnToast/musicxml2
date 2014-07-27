@@ -45,7 +45,7 @@ data Dynamics
     | SFZ 
     | SFFZ 
     | FZ
-    deriving (Eq, Ord, Show, Enum, Bounded)
+    deriving (Eq, Ord, Show, Read, Enum, Bounded)
 
 instance IsDynamics Dynamics where
     fromDynamics (DynamicsL (Just x, Nothing)) = case x of

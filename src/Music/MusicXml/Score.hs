@@ -241,8 +241,8 @@ data PartListElem
         (Maybe GroupBarlines)
         Bool                            -- number start/stop name abbrev? symbol barline style
 
-data GroupSymbol   = GroupBrace | GroupLine | GroupBracket | GroupSquare | NoGroupSymbol
-data GroupBarlines = GroupBarLines | GroupNoBarLines | GroupMensurstrich
+data GroupSymbol   = GroupBrace | GroupLine | GroupBracket | GroupSquare | NoGroupSymbol deriving Eq
+data GroupBarlines = GroupBarLines | GroupNoBarLines | GroupMensurstrich deriving Eq
 
 -- ----------------------------------------------------------------------------------
 -- Music
@@ -550,6 +550,7 @@ data BeamType
     | EndBeam
     | ForwardHook
     | BackwardHook
+    deriving Eq
 
 type StartStop         = StartStopContinueChange
 type StartStopChange   = StartStopContinueChange
@@ -567,6 +568,7 @@ data StemDirection
     | StemUp
     | StemNone
     | StemDouble
+    deriving Eq
 
 data LineType
     = Solid
@@ -594,6 +596,7 @@ data NoteHead
     | LeftTriangleNoteHead
     | RectangleNoteHead
     | NoNoteHead                        -- "none"
+    deriving Eq
 
 deriving instance Eq            Level
 deriving instance Show          Level
